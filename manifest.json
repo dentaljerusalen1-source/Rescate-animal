@@ -1,0 +1,11 @@
+{
+  "name": "Rescate Animal",
+  "short_name": "Rescate Animal",
+  "lang": "es",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2b8fd6",
+  "theme_color": "#2b8fd6",
+  "icons": [{ "src": "img/icono.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
