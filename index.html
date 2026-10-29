@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#2b8fd6" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="description" content="Rescate Animal: un rompecabezas de bloques para salvar animales de todo el mundo." />
+  <title>Rescate Animal</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="img/icono.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- INICIO -->
+    <section id="pantalla-inicio" class="pantalla activa">
+      <div class="inicio-fondo">
+        <div class="burbuja b1"></div><div class="burbuja b2"></div><div class="burbuja b3"></div>
+      </div>
+      <div class="barra-monedas"><span class="moneda">🪙</span> <span class="monedas-valor">0</span></div>
+      <button class="btn-icono btn-sonido" aria-label="Sonido">🔊</button>
+      <div class="inicio-contenido">
+        <div class="logo-animales">🐧🦁🐼</div>
+        <h1 class="titulo">Rescate<br /><span>Animal</span></h1>
+        <p class="subtitulo">¡Acomoda bloques, baja el agua y salva a los animalitos!</p>
+        <button class="btn btn-grande btn-principal" data-ir="mundos">▶ Jugar</button>
+        <div class="fila-botones">
+          <button class="btn btn-secundario" data-ir="santuario">🏡 Santuario</button>
+          <button class="btn btn-secundario" data-ir="tienda">🛍️ Tienda</button>
+        </div>
+        <button class="btn-texto" id="btn-como-jugar">¿Cómo se juega?</button>
+      </div>
+    </section>
+
+    <!-- MUNDOS -->
+    <section id="pantalla-mundos" class="pantalla">
+      <header class="cabecera">
+        <button class="btn-icono" data-ir="inicio" aria-label="Volver">←</button>
+        <h2>Elige un mundo</h2>
+        <div class="barra-monedas chica"><span class="moneda">🪙</span> <span class="monedas-valor">0</span></div>
+      </header>
+      <div class="lista-mundos" id="lista-mundos"></div>
+    </section>
+
+    <!-- NIVELES -->
+    <section id="pantalla-niveles" class="pantalla">
+      <header class="cabecera">
+        <button class="btn-icono" data-ir="mundos" aria-label="Volver">←</button>
+        <h2 id="titulo-mundo">Mundo</h2>
+        <div class="barra-monedas chica"><span class="moneda">🪙</span> <span class="monedas-valor">0</span></div>
+      </header>
+      <p class="descripcion-mundo" id="descripcion-mundo"></p>
+      <div class="lista-niveles" id="lista-niveles"></div>
+    </section>
+
+    <!-- JUEGO -->
+    <section id="pantalla-juego" class="pantalla">
+      <header class="cabecera juego-cabecera">
+        <button class="btn-icono" id="btn-salir-juego" aria-label="Salir">←</button>
+        <div class="info-nivel">
+          <div id="juego-titulo">Nivel</div>
+          <div class="vidas" id="vidas"></div>
+        </div>
+        <div class="barra-monedas chica"><span class="moneda">🪙</span> <span class="monedas-valor">0</span></div>
+      </header>
+
+      <div class="escena">
+        <div class="jaula" id="jaula">
+          <div class="jaula-animal" id="jaula-animal"></div>
+          <div class="jaula-barras" id="jaula-barras"></div>
+          <div class="globo" id="globo">¡Ayuda!</div>
+        </div>
+        <div class="meta">
+          <div class="meta-texto">Filas: <b id="meta-filas">0</b> / <b id="meta-total">0</b></div>
+          <div class="meta-barra"><div class="meta-relleno" id="meta-relleno"></div></div>
+          <div class="agua-texto" id="agua-texto">💧 El agua sube con cada pieza</div>
+        </div>
+      </div>
+
+      <div class="tablero-marco">
+        <div class="tablero" id="tablero"></div>
+        <div class="agua" id="agua"><div class="ola"></div></div>
+        <div class="aviso" id="aviso"></div>
+      </div>
+
+      <div class="bandeja" id="bandeja">
+        <div class="ranura" data-i="0"></div>
+        <div class="ranura" data-i="1"></div>
+        <div class="ranura" data-i="2"></div>
+      </div>
+    </section>
+
+    <!-- SANTUARIO -->
+    <section id="pantalla-santuario" class="pantalla">
+      <header class="cabecera">
+        <button class="btn-icono" data-ir="inicio" aria-label="Volver">←</button>
+        <h2>🏡 Santuario</h2>
+        <div class="barra-monedas chica"><span class="moneda">🪙</span> <span class="monedas-valor">0</span></div>
+      </header>
+      <p class="descripcion-mundo" id="santuario-cuenta"></p>
+      <div class="santuario" id="santuario"></div>
+    </section>
+
+    <!-- TIENDA -->
+    <section id="pantalla-tienda" class="pantalla">
+      <header class="cabecera">
+        <button class="btn-icono" data-ir="inicio" aria-label="Volver">←</button>
+        <h2>🛍️ Tienda</h2>
+        <div class="barra-monedas chica"><span class="moneda">🪙</span> <span class="monedas-valor">0</span></div>
+      </header>
+      <div class="probador">
+        <div class="probador-figura" id="probador-figura"></div>
+        <div class="probador-info">
+          <div class="probador-nombre" id="probador-nombre"></div>
+          <div class="probador-elegir" id="probador-elegir"></div>
+        </div>
+      </div>
+      <div class="pestanas" id="pestanas"></div>
+      <div class="articulos" id="articulos"></div>
+    </section>
+
+    <!-- VENTANA MODAL -->
+    <div class="modal-fondo" id="modal">
+      <div class="modal" id="modal-caja"></div>
+    </div>
+
+    <div class="confeti" id="confeti"></div>
+  </div>
+
+  <script src="js/datos.js"></script>
+  <script src="js/juego.js"></script>
+</body>
+</html>
